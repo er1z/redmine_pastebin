@@ -1,0 +1,9 @@
+<h2>Your pastes  (<%= link_to 'add', paste_add_path({:project_id => params[:project_id]}) %>)</h2>
+
+<div class="warning"><%= params[:notice] %></div>
+
+<ul>
+<% @items.each do |item| %>
+      <li><%= link_to item.created_at, controller: "pastes", action: "show", id: item.id %>  (<%= link_to 'raw', paste_raw_path({:id => item.id, :project_id => params[:project_id]}) %>)</li>
+<% end %>
+</ul>

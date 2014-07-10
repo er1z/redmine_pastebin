@@ -1,0 +1,5 @@
+<h2>Add new paste</h2>
+<%= form_for @item, url: {action: 'add'} do |form| %>
+    <%= form.text_area :content %></br>
+    <%= form.submit %>
+<% end %>

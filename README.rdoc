@@ -1,0 +1,29 @@
+= Redmine Pastebin
+
+A plugin providing simple pastebin service (internal). Just enable module within project. Works with Redmine 2.2.x.
+
+Permissions? Just "enable access".
+
+Pasties not accessed within 30 days are automatically deleted. Syntax highlight provided by [Highlight.js](http://highlightjs.org).
+
+Validation not provided. I had just to work, nothing more.
+
+=== Installation
+
+Download, extract
+
+```rake redmine:db:plugins migrate```
+
+then restart Redmine.
+
+=== API
+
+Enable REST in Settings (Admin->Settings->Authentication->Enable REST), generate own API key (in profile page)
+
+http://redmine.example.org/projects/slug/pastes/add/api?key=abcd
+
+And send POST request to this entrypoint (code as body), then you'll receive a paste link.
+
+=== Thanks
+
+Thanks for Highlight.js creators. Good job!

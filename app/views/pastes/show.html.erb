@@ -1,0 +1,15 @@
+<% content_for :header_tags do %>
+    <%= stylesheet_link_tag 'default.css', :plugin => 'redmine_pastebin' %>
+    <%= javascript_include_tag "highlight.pack.js", :plugin => 'redmine_pastebin' %>
+    <script>
+        hljs.lineNodes = true;
+        hljs.initHighlightingOnLoad();
+    </script>
+<% end %>
+
+<h2>Paste#<%= @item.id %> (<%= link_to 'raw', paste_raw_path({:id => @item.id, :project_id => params[:project_id]}) %>)</h2>
+
+<p>Created at: <%= @item.created_at %></p>
+
+<pre><code><%= @item.content %></code></pre>
+
