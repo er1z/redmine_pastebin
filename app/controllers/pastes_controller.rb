@@ -10,14 +10,14 @@ class PastesController < ApplicationController
   accept_api_auth :api
 
   def index
-    @items = Paste.where(project_id: @project.id, user_id: User.current.id).order("created_at DESC")
+    @items = Paste.where(:project_id=>@project.id, :user_id=>User.current.id).order("created_at DESC")
   end
 
   def api
     if request.post?
 
       if save({ :content => request.body.read })
-        url = url_for controller: "pastes", action: "show", id: @item.id
+        url = url_for :controller=> "pastes", :action=> "show", :id=> @item.id
         render :text => url, :content_type => 'text/plain'
       else
         render 500
@@ -30,8 +30,8 @@ class PastesController < ApplicationController
     if request.post?
 
       if save(params[:paste])
-        url = url_for controller: "pastes", action: "show", id: @item.id
-        redirect_to action: 'index', :notice => url
+        url = url_for :controller=> "pastes", :action=> "show", :id=> @item.id
+        redirect_to :action=> 'index', :notice => url
       end
 
     else
@@ -55,7 +55,7 @@ class PastesController < ApplicationController
 
   private
   def get_item
-    @item = Paste.where(id: params[:id], project_id: @project.id)[0]
+    @item = Paste.where(:id=> params[:id], :project_id=> @project.id)[0]
     Paste.touch(params[:id])
   end
 

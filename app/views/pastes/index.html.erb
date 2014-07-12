@@ -6,6 +6,6 @@
 
 <ul>
 <% @items.each do |item| %>
-      <li>#<%= item.id %> - <%= link_to item.created_at, controller: "pastes", action: "show", id: item.id %>  (<%= link_to 'raw', paste_raw_path({:id => item.id, :project_id => params[:project_id]}) %>)</li>
+      <li>#<%= item.id %> - <%= link_to item.created_at, :controller=> "pastes", :action=> "show", :id=> item.id %>  (<%= link_to 'raw', paste_raw_path({:id => item.id, :project_id => params[:project_id]}) %>)</li>
 <% end %>
 </ul>
